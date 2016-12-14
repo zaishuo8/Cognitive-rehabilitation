@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/prescription.css">
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+    <script type="text/javascript" src="javascripts/prescription.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include nav.ejs%>
+<div id="prepannel">
+    <div id="premenagetitle">处方管理</div>
+        <div id="toolpannel">
+            <form class="form-inline" role="form">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-tags"></span></span>
+                    <input type="text" class="form-control" placeholder="请输入处方名字">
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="text" class="col-sm-7 control-label">是否共享:</label>
+                    <div class="col-sm-5">
+                        <select class="form-control" name="share">
+                            <option value="2">不限&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                            <option value="1">已共享&nbsp;&nbsp;&nbsp;</option>
+                            <option value="0">未共享&nbsp;&nbsp;&nbsp;</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">查询</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myaddpre">添加处方</button>
+            </form>
+        </div>
+        <table class="table table-striped" id="prelist">
+            <tr>
+                <th>操作选项</th>
+                <th>处方名字</th>
+                <th>是否共享</th>
+                <th>创建时间</th>
+            </tr>
+            <% rs.forEach(function (row) { %>
+            <tr>
+                <td>
+                    <a href="/preaddti?preid=<%= row['preid'] %>">修改题目</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/changeshar?preid=<%= row['preid'] %>&isshar=<%= row['isshar'] %>">
+                        <% if(row['isshar']=='是'){ %>
+                        取消共享
+                        <% }else{ %>
+                        共享
+                        <% } %>
+                    </a>
+                </td>
+                <td><%= row['prename'] %></td>
+                <td><%= row['isshar'] %></td>
+                <td><%= row['createtime'] %></td>
+            </tr>
+            <% }) %>
+        </table>
+</div>
+
+<!--添加处方模态框-->
+<div class="modal fade" id="myaddpre" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">添加处方</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addpreform" name="addpreform" class="form-horizontal" role="form" method="post" action="./addprebank">
+                    <div class="form-group">
+                        <label for="text" class="col-sm-4 control-label">处方名称:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="prename" name="prename" placeholder="">
+                            <h5 id="prenametip" class="tip">处方名称不能为空</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="text" class="col-sm-4 control-label">处方描述:</label>
+                        <div class="col-sm-8">
+                            <textarea rows="4" class="form-control" id="premess" name="premess" placeholder=""></textarea>
+                            <h5 id="premesstip" class="tip">处方描述不能为空</h5>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

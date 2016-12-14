@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/asstask.css">
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+    <script type="text/javascript" src="javascripts/asstask.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include nav.ejs%>
+<div id="taskpannel">
+    <% rs.forEach(function (row) { %>
+    <div class="asstask">
+        <div class="pimgbox">
+            <img src="images/pimg.jpeg">
+        </div>
+        <h4 class="taskpname"><%= row['pname'] %>(<%= row['pnum'] %>)</h4>
+        <% var asstime = row['astime'].substr(5); %>
+        <h4 class="tasktime">评定开始时间:<%= asstime %></h4>
+        <a href="/startass?akid=<%=row['akid']%>"><button type="button" class="btn btn-primary">开始评定</button></a>
+    </div>
+    <%})%>
+</div>
+</body>
+</html>

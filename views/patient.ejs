@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/patient.css">
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+    <script type="text/javascript" src="javascripts/patient.js"></script>
+    <script type="text/javascript" src="javascripts/tbank.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include nav.ejs%>
+
+<div id="patient" class="container">
+    <input id="pid" type="hidden" value="<%=rs1[0]['pid']%>">
+    <!-- Nav tabs -->
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#binli" role="tab" data-toggle="tab">病例信息</a></li>
+        <li role="presentation"><a href="#pingding" role="tab" data-toggle="tab">康复评定</a></li>
+        <li role="presentation"><a href="#xunlian" role="tab" data-toggle="tab">康复训练</a></li>
+        <li role="presentation"><button type="button" id="goback" class="btn btn-success" onclick="goBack()">返回</button></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!--病例信息-->
+        <div role="tabpanel" class="tab-pane active" id="binli">
+            <form class="form-horizontal" role="form" method="get" action="./upddtp">
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">病症:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="disease" name="disease" value="<%= rs1[0]['disease'] %>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">目标:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="target" name="target" value="<%= rs1[0]['target'] %>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">问题:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="problem" name="problem" value="<%= rs1[0]['problem'] %>">
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-left: 35%">
+                    <button type="submit" class="btn btn-success">更新</button>
+                </div>
+            </form>
+        </div>
+
+        <!--康复评定-->
+        <div role="tabpanel" class="tab-pane" id="pingding">
+            <div class="form-group" style="">
+                <% if(finishednum!=0){ %>
+                <h4>您有未完成的评定任务,请先完成后再添加新任务</h4>
+                <% }else { %>
+                <button id="addpingding" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">增加评定</button>
+                <% } %>
+            </div>
+
+            <% rs3.forEach(function (row) { %>
+            <div class="assesspannel">
+                <div class="assesstitle">
+                    &nbsp;&nbsp;&nbsp;
+                    <%= row['astype'] %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    评定题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    创建时间:<%= row['createtime'] %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    评定时间:<%= row['astime'] %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <% if(row['finished']=='0'){%>
+                    <button type="button" class="btn btn-success">添加题目</button>
+                    <% } else if(row['reported']=='0'){%>
+                    <button type="button" class="btn btn-primary">编辑报告</button>
+                    <% }else {%>
+                    <button type="button" class="btn btn-info">查看报告</button>
+                    <% } %>
+                </div>
+                <div class="assessdetails">
+                    <div class="subject">
+                        <img class="subjectimg" src="images/fanyingshi.png">
+                        <p class="subjecttitle">反应时检查</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suredelate">移除</button>
+                    </div>
+                    <div class="subject">
+                        <img class="subjectimg" src="images/fanyingshi.png">
+                        <p class="subjecttitle">反应时检查</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suredelate">移除</button>
+                    </div>
+                </div>
+            </div>
+            <%})%>
+        </div>
+        <!--增加评定模态框-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">添加评定任务</h4>
+                    </div>
+                    <form id="addasstask" class="form-horizontal" role="form" method="get" action="./addasstask">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="text" class="col-sm-2 control-label">评定类型:</label>
+                                <div class="col-sm-10">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="asstype" value="初评"> 初评
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="asstype" value="中评"> 中评
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="asstype" value="末评"> 末评
+                                    </label>
+                                </div>
+                                <h5 class="tip" id="asstypetip">类型不能为空</h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="col-sm-2 control-label">评定时间:</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" id="asstime" name="asstime"/>
+                                </div>
+                                <h5 class="tip" id="isasstimetip">评定时间不能为空</h5>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!--康复训练-->
+        <div role="tabpanel" class="tab-pane" id="xunlian">
+            <div class="form-group">
+                <button id="addtrain" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">更换处方</button>
+            </div>
+
+            <div class="trainpannel" id="ptgroup">
+                <div class="traintitle">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    未达标或未做的训练题
+                    <a href="/trainbank2?pid=<%=rs1[0]['pid']%>"><button id="addtrainti" type="button" class="btn btn-success" >添加题目</button></a>
+                </div>
+                <input id="hidden" type="hidden" value="<%=rs1[0]['tgroup']%>">
+                <div class="subject"  id="example">
+                    <img class="subjectimg" src="images/fanyingshi.png">
+                    <p class="subjecttitle">反应时检查</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal">移除</button>
+                </div>
+                <div class="traindetails" id="traindetails"></div>
+            </div>
+            <div class="trainpannel">
+                <div class="traintitle">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    已经达标的训练题
+                </div>
+                <div class="traindetails">
+                    <div class="subject">
+                        <img class="subjectimg" src="images/fanyingshi.png">
+                        <p class="subjecttitle">反应时检查</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--处方库模态框-->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <ul id="myTab" class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#myprescription" role="tab" data-toggle="tab">我的处方库</a></li>
+                            <li role="presentation"><a href="#publicprescription" role="tab" data-toggle="tab">公共处方库</a></li>
+                        </ul>
+                    </div>
+                    <div class="modal-body tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="myprescription">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>处方名字</th>
+                                    <th>操作</th>
+                                </tr>
+                                <% rs4.forEach(function (row) { %>
+                                <tr id="<%= row['preid'] %>">
+                                    <td><%=row['prename']%></td>
+                                    <td><a href="/preaddti?preid=<%= row['preid'] %>">预览</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="choice" href="#" data-dismiss="modal">选择</a></td>
+                                </tr>
+                                <% }) %>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="publicprescription">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>处方名字</th>
+                                    <th>创建人</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr>
+                                <% rs5.forEach(function (row) { %>
+                                <tr id="<%= row['preid'] %>">
+                                    <td><%=row['prename']%></td>
+                                    <td><%=row['dname']%></td>
+                                    <td><a href="/preaddti?preid=<%= row['preid'] %>">预览</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="choice" href="#" data-dismiss="modal">选择</a></td>
+                                </tr>
+                                <% }) %>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

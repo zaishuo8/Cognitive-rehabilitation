@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/mytrain.css">
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+    <script type="text/javascript" src="javascripts/mytrain.js"></script>
+    <script type="text/javascript" src="javascripts/tbank.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include pnav.ejs%>
+<div id="perpat">
+    <input id="pid" type="hidden" value="<%=rs3[0]['pid']%>">
+    <div class="trainpannel">
+        <div class="traintitle">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            我的训练题
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/trainbank2?pid=<%=rs3[0]['pid']%>"><button id="addtrainti" type="button" class="btn btn-success">添加题目</button></a>
+        </div>
+        <input id="hidden" type="hidden" value="<%=rs3[0]['tgroup']%>">
+        <div id="example" class="subject">
+            <a href="#"><img class="subjectimg" src="images/fanyingshi.png"></a>
+            <p class="subjecttitle">反应时检查</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suredelate">移除</button>
+        </div>
+        <div id="traindetails" class="traindetails"></div>
+    </div>
+    <div class="trainpannel">
+        <div class="traintitle">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            已经达标的训练题
+        </div>
+        <div class="traindetails">
+            <div class="subject">
+                <img class="subjectimg" src="images/fanyingshi.png">
+                <p class="subjecttitle">反应时检查</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suredelate">移除</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

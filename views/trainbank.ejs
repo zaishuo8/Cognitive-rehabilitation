@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/trainbank.css">
+
+</head>
+<body>
+<input type="hidden" id="preid" name="preid" value="<%=preid%>">
+<input type="hidden" id="pid" name="pid" value="<%=pid%>">
+<input type="hidden" id="rs2" name="rs2" value="<%=rs2[0]['tgroup']%>">
+<div id="title">
+    <button type="button" id="sureadd" class="btn btn-primary">添加</button>
+    <button type="button" class="btn btn-primary" onclick="goBack()">返回</button>
+</div>
+<div id="tbpannel">
+    <%rs1.forEach(function (row) { %>
+    <div class="subject" id="<%=row['tid']%>">
+        <img class="subjectimg" src="images/<%=row['tename']%>.png">
+        <p class="subjecttitle"><%=row['tname']%></p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suredelate">选择</button>
+    </div>
+    <%});%>
+</div>
+<div id="choiced"></div>
+</body>
+<script type="text/javascript" src="javascripts/trainbank.js"></script>
+</html>

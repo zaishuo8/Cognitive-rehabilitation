@@ -1,0 +1,49 @@
+#addtipannel {
+    height: 500px;
+    margin-left: 240px;
+    width: 80%;
+}
+.trainpannel{
+    width: 100%;
+    height: 350px;
+    border: 1px solid #C1BEBE;
+    margin-top: 20px;
+}
+.traintitle{
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #C1BEBE;
+    font-size: 16px;
+    color: dimgray;
+    padding-top: 12px;
+    background-color: #d9dadf;
+}
+.traintitle button{
+    width: 100px;
+    margin-left: 20px;
+}
+#addtrainti{
+    position: relative;
+    left: 500px;
+}
+#traindetails{
+    background-color: white;
+    height: 208px;
+}
+.subject{
+    padding: 15px;
+    float: left;
+}
+.subject button{
+    width: 60px;
+    margin-left: 20%;
+}
+.subjectimg{
+    width: 100px;
+    height: 100px;
+}
+.subjecttitle{
+    color: cornflowerblue;
+    margin-top: 10px;
+    margin-left: 19px;
+}

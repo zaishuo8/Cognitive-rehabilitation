@@ -1,0 +1,51 @@
+#messagedetialpannel{
+    margin-left: 240px;
+    width: 80%;
+    height: 500px;
+}
+.messpannel{
+    width: 100%;
+    margin: 40px auto;
+    border: 1px solid silver;
+}
+#replymess{
+    height: 210px;
+    background-color: white;
+}
+.panneltitle{
+    width: 100%;
+    height: 60px;
+    background-color: #d9dadf;
+    border-bottom: 1px solid silver;
+    font-size: 26px;
+    padding-top: 10px;
+}
+#reply{
+    height: 140px;
+}
+.pannelsub{
+    background-color: white;
+    width: 100%;
+}
+textarea{
+    width: 500px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 40px;
+    border: 1px solid silver;
+    float: left;
+}
+#repbtn{
+    width: 100px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 50px;
+    float: left;
+}
+h5.tip{
+     width: 55%;
+     color: lightcoral;
+     margin-top: 5px;
+     margin-left: 40px;
+     clear: both;
+}

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/message.css">
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+    <script type="text/javascript" src="javascripts/message.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include nav.ejs%>
+
+<div id="messagepannel" class="container">
+    <!-- Nav tabs -->
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#permessage" role="tab" data-toggle="tab">个人信息</a></li>
+        <li role="presentation"><a href="#keychange" role="tab" data-toggle="tab">修改密码</a></li>
+        <!--<li role="presentation"><a href="#message" role="tab" data-toggle="tab">留言信息</a></li>-->
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!--个人信息-->
+        <div role="tabpanel" class="tab-pane active" id="permessage">
+            <form id="upddoc" class="form-horizontal" role="form" method="get" action="./upddn">
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">登陆账号:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dnum" name="dnum" value="<%= rs1[0]['dnum'] %>" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">我的姓名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dname" name="dname" value="<%= rs1[0]['dname'] %>">
+                        <h5 class="tip" id="dnametip1">姓名不能为空</h5>
+                        <h5 class="tip" id="dnametip2">姓名必须是汉字</h5>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-left: 35%">
+                    <button type="submit" class="btn btn-success">更新</button>
+                    <button type="button" class="btn btn-success" onclick="goBack()">返回</button>
+                </div>
+            </form>
+
+            <div style="width:100px; height:100px; border:2px solid seagreen; border-radius:50%; margin-left: 50px; margin-top: 30px">
+                <% if(!docbean.picroute){ %>
+                <img id="prepic" src="images/pimg.jpeg" style="width: 96px; height: 96px; overflow: hidden; border-radius:50%;">
+                <% }else{ %>
+                <img id="prepic" src="<%=docbean.picroute%>" style="width: 96px; height: 96px; overflow: hidden; border-radius:50%;">
+                <% } %>
+            </div>
+            <form id="uploadpic" action="/uploadpic" enctype="multipart/form-data" method="post">
+                <input type="file" name="upload" accept="image/png,image/jpeg" multiple="multiple"><br>
+                <input type="submit" class="btn btn-success" value="保存头像" style="margin-left: 60px; margin-top: 10px;">
+            </form>
+        </div>
+
+        <!--修改密码-->
+        <div role="tabpanel" class="tab-pane" id="keychange">
+            <form class="form-horizontal" id="changepwd" role="form" method="get" action="./changepwd">
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">原来密码:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="oldpwd" name="oldpwd">
+                        <p class="tip" id="isoldpwd"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">更新密码:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ppwd1" name="ppwd1">
+                        <h5 class="tip" id="ppwd1tip">密码长度必须为6到12位</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">确认密码:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ppwd2" name="ppwd2">
+                        <h5 class="tip" id="ppwd2tip">密码输入不一致</h5>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-left: 35%">
+                    <button type="submit" class="btn btn-success">更新</button>
+                    <button type="button" class="btn btn-success" onclick="goBack()">返回</button>
+                </div>
+            </form>
+        </div>
+
+        <!--留言信息-->
+        <div role="tabpanel" class="tab-pane" id="message"></div>
+    </div>
+</div>
+
+</body>
+</html>

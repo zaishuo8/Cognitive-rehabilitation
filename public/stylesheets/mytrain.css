@@ -1,0 +1,40 @@
+#perpat{
+	width: 75%;
+	margin:25px 20%;
+}
+.subject{
+    padding: 15px;
+    float: left;
+}
+.subject button{
+    width: 60px;
+    margin-left: 20%;
+}
+.subjectimg{
+    width: 100px;
+    height: 100px;
+}
+.subjecttitle{
+    color: cornflowerblue;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.trainpannel{
+    width: 100%;
+    height: 270px;
+    border: 1px solid #C1BEBE;
+    margin-top: 20px;
+}
+.traintitle{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #C1BEBE;
+    font-size: 16px;
+    color: dimgray;
+    padding-top: 12px;
+    background-color: #d9dadf;
+}
+.traindetails{
+    background-color: white;
+    height: 208px;
+}

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/* CSS Document */
+*{
+	margin: 0;
+	padding: 0;
+}
+p{
+	text-align: center;
+	font-size: 160px;
+	margin: 45px auto;
+}
+#ti{
+	width: 1300px;
+	height: 260px;
+	margin: 100px auto;
+}
+#as{
+	width: 1130px;
+	height: 260px;
+	margin: 100px auto;
+}
+#t1{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+}
+#t2{
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+#t3{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+}
+#t4{
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+#t5{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+}
+#a1{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+	margin-right: 30px;
+	cursor: pointer;
+}
+#a2{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+	margin-right: 30px;
+	cursor: pointer;
+}
+#a3{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+	margin-right: 30px;
+	cursor: pointer;
+}
+#a4{
+	width: 250px;
+	height: 250px;
+	float: left;
+	border: 5px solid black;
+	cursor: pointer;
+}
+#countime{
+	position: absolute;
+	top:20px;
+	right: 20px;
+	font-size: 70px;
+}
+#again{
+	border: 3px solid black;
+    width: 400px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+p#againp{
+	font-size: 100px;
+}
+#goback{
+	width: 100px;
+	height: auto;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	border: 2px solid black;
+	font-size: 30px;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}

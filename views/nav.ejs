@@ -1,0 +1,55 @@
+<div id="nav">
+    <div id="logobox" style="width:115px; margin:0 auto; padding-top:5px;">
+        <img src="images/logo.png" style="width:115px; height:40px;">
+        <% var time = new Date().toLocaleDateString(); %>
+        <p style="font-family:Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif; font-size:15px; margin: 0 auto; width: 78px;"><%=time%></p>
+    </div>
+    <div id="namecard" style="margin:0 auto; border:2px solid silver; width:180px; height:210px; margin-bottom:15px;">
+        <div style="width:80px; height:80px; border:2px solid seagreen; margin:25px auto; border-radius:50%;">
+            <% if(!docbean.picroute){ %>
+            <img src="images/pimg.jpeg" style="width: 76px; height: 76px; overflow: hidden; border-radius:50%;">
+            <% }else{ %>
+            <img src="<%=docbean.picroute%>" style="width: 76px; height: 76px; overflow: hidden; border-radius:50%;">
+            <% } %>
+        </div>
+        <h5 style="margin: 20px auto;width: 75px;">您好:<%=docbean.dname%></h5>
+        <span id="unreadmessagenum" class="glyphicon glyphicon-envelope" style="width: 120px; margin: auto 15%">【<a href="/imessage"><%=docbean.unreadMessagenum%>条未读信息</a>】</span>
+        <%if(docbean.unreadMessagenum!=0){%>
+        <img id="xiaohongdian" src="images/xiaohongdian.png">
+        <%}%>
+    </div>
+
+    <ul id="navlist">
+        <% if(title=='患者管理'){ %>
+        <a href="#"><li class="choiced"><span class="glyphicon glyphicon-user">&nbsp;患者管理</span></li></a>
+        <% }else{%>
+        <a href="/pmanage"><li><span class="glyphicon glyphicon-user">&nbsp;患者管理</span></li></a>
+        <%} %>
+
+        <% if(title=='评定任务'){ %>
+        <a href="#"><li class="choiced"><span class="glyphicon glyphicon-file">&nbsp;评定任务</span></li></a>
+        <% }else{%>
+        <a href="/pingding"><li><span class="glyphicon glyphicon-file">&nbsp;评定任务</span></li></a>
+        <%} %>
+
+        <% if(title=='我的信息'){ %>
+        <a href="#"><li class="choiced"><span class="glyphicon glyphicon-envelope">&nbsp;我的信息</span></li></a>
+        <% }else{%>
+        <a href="/message"><li><span class="glyphicon glyphicon-envelope">&nbsp;我的信息</span></li></a>
+        <%} %>
+
+        <% if(title=='留言信息'){ %>
+        <a href="#"><li class="choiced"><span class="glyphicon glyphicon-comment">&nbsp;留言信息</span></li></a>
+        <% }else{%>
+        <a href="/imessage"><li><span class="glyphicon glyphicon-comment">&nbsp;留言信息</span></li></a>
+        <%} %>
+
+        <% if(title=='处方档案'){ %>
+        <a href="#"><li class="choiced"><span class="glyphicon glyphicon-tags">&nbsp;处方档案</span></li></a>
+        <% }else{%>
+        <a href="/prescription"><li><span class="glyphicon glyphicon-tags">&nbsp;处方档案</span></li></a>
+        <%} %>
+
+        <a href="./logout"><li style="border-bottom:2px solid #ADADAD;"><span class="glyphicon glyphicon-log-out">&nbsp;退出登录</span></li></a>
+    </ul>
+</div>

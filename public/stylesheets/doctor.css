@@ -1,0 +1,33 @@
+.plist
+{
+    width:960px;
+    height:160px;
+    border:1px solid #C1BEBE;
+    margin-top:22px;
+    background-color: #FFFFFF;
+}
+h5.pmessage{
+    width: 90px;
+    margin: 10px auto;
+    color: #999999;
+}
+.col-md-6 h5{
+    color: #999999;
+    margin-bottom: 40px;
+}
+.allmessage{
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 40px;
+    float: left;
+}
+.mtitle{
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: 4px;
+    color: #999999;
+}
+.judge{
+    width: 40px;
+    height: 40px;
+}

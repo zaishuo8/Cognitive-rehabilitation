@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/mymessage.css">
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+    <script type="text/javascript" src="javascripts/mymessage.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include pnav.ejs%>
+
+<div id="messagedetialpannel">
+    <div id="replymess" class="messpannel">
+        <div class="panneltitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回复留言</div>
+        <div id="reply" class="pannelsub">
+            <form id="replyform" method="get" action="./preplymessage">
+                <textarea name="reply" id="replycontent"></textarea>
+                <button id="repbtn" type="submit" class="btn btn-primary">回复留言</button>
+                <h5 class="tip" id="remess">留言不能为空</h5>
+            </form>
+        </div>
+    </div>
+    <div id="historymess" class="messpannel">
+        <div class="panneltitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留言历史</div>
+        <div class="pannelsub">
+            <table class="table table-striped">
+                <tr>
+                    <th>医生</th>
+                    <th>我</th>
+                </tr>
+                <% rs1.forEach(function (row) {
+                if(row['sid']==pnum){ %>
+                <tr>
+                    <td></td>
+                    <td><%=row['createtime']%>&nbsp;:&nbsp;<%=row['content']%></td>
+                </tr>
+                <% }else{ %>
+                <tr>
+                    <td><%=row['createtime']%>&nbsp;:&nbsp;<%=row['content']%></td>
+                    <td></td>
+                </tr>
+                <% } %>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

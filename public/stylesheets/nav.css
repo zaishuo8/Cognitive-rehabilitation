@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+#nav li{
+	width:100%;
+	height:50px;
+	border-top:2px solid #ADADAD;
+	font-family:Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif;
+	font-size:15px;
+	color:#423F3F;
+	text-align:center;
+	padding-top: 15px;
+	list-style-type:none;
+}
+#nav li:hover{
+	cursor:pointer;
+	background:#53868B;
+	color:#FFFFFF;
+}
+#nav
+{
+	position:fixed;
+	left:0;
+	top:0;
+	background-color:#d9dadf;
+	width: 220px;
+	height:798px;
+}
+.container
+{
+	margin:25px 20%;
+	width: 1000px;
+}
+.choiced{
+	background:#53868B;
+	color:#FFFFFF;
+}
+#xiaohongdian{
+	width: 8px;
+	height: 8px;
+	position: relative;
+	left: 35px;
+	bottom: 27px;
+}
+a{
+	color: #423F3F;
+}

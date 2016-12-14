@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/doctor.css">
+
+
+    <script type="text/javascript" src="javascripts/nav.js"></script>
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include nav.ejs%>
+<div id="pmanger" class="container">
+    <div id="search" style="width:985px;">
+        <input type="text" class="form-control" placeholder="请输入姓名" style="width: 150px; display: inline">
+        <select class="form-control" style="width: 70px; display: inline">
+            <option value="inhos">未出院</option>
+            <option value="outhos">已出院</option>
+        </select>
+        <button class="btn btn-success" style="width:80px; margin-left:18px;">搜索</button>
+        <a href="/resgin"><button class="btn btn-success">新增患者账号</button></a>
+        <button class="btn btn-default">
+            按姓名排序&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></button>
+        <button class="btn btn-default">按入院时间排序&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></button>
+        <button class="btn btn-default">按训练时间排序&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></button>
+    </div>
+
+    <% rs.forEach(function (row) { %>
+    <div class="row plist" style="margin-left: 0px">
+        <div class="col-md-2" style="border-right: 1px solid silver; height: 100%">
+            <div class="pimgbox" style="width:80px; height:80px; border:2px solid seagreen; margin:10px auto; border-radius:50%;">
+                <a href="/patient?pnum=<%= row['pnum'] %>&pname=<%= row['pname'] %>"><img src="images/pimg.jpeg" style="width: 76px; height: 76px; overflow: hidden; border-radius:50%;"></a>
+            </div>
+            <h5 class="pmessage"><%= row['pname'] %>(<%= row['pnum'] %>)</h5>
+            <h5 class="pmessage"><%= row['createtime'] %></h5>
+        </div>
+        <div class="col-md-6" style="border-right: 1px solid silver; height: 100%">
+            <h5 style="float: left; width: 300px;"><%= row['sex'] %>&nbsp;&nbsp;<%= row['age'] %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;病症:<%= row['disease'] %></h5>
+            <h5 style="float: left; width: 120px">处方:单侧忽略处方</h5>
+            <h5 style="clear: both">近期目标:<%= row['target'] %></h5>
+            <h5>存在问题:<%= row['problem'] %></h5>
+        </div>
+        <div class="col-md-4">
+            <div class="allmessage">
+                <p class="mtitle">病例信息</p>
+                <img class="judge" src="images/1.png">
+            </div>
+            <div class="allmessage">
+                <p class="mtitle">康复训练</p>
+                <img class="judge" src="images/1.png">
+            </div>
+            <div class="allmessage">
+                <p class="mtitle">康复评定</p>
+                <img class="judge" src="images/1.png">
+            </div>
+            <div class="allmessage">
+                <p class="mtitle">评定报告</p>
+                <img class="judge" src="images/1.png">
+            </div>
+            <div class="allmessage" style="margin-right: 0px">
+                <p class="mtitle">年费会员</p>
+                <img class="judge" src="images/1.png">
+            </div>
+        </div>
+    </div>
+    <%})%>
+
+    <div id="pages" style="margin-top: 25px; margin-left: 35% ">
+        <ul class="pagination" style="margin: 0 auto">
+            <% if(pages!=0){ if(page==1){ %>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <% }else {%>
+            <li><a href="/pageturn?page=<%= page-1 %>">&laquo;</a></li>
+            <% } }%>
+
+            <% for(var i=1;i<=pages;i++){
+                if (i!=page){
+            %>
+            <li><a href="/pageturn?page=<%= i %>"><%= i %></a></li>
+            <% }else {%>
+            <li class="active"><a href="#"><%= i %></a></li>
+            <% }} %>
+
+            <%if(pages!=0){ if(page==pages){ %>
+            <li class="disabled"><a href="#">&raquo;</a></li>
+            <% }else {%>
+            <li><a href="/pageturn?page=<%= page+1 %>">&raquo;</a></li>
+            <% }} %>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+

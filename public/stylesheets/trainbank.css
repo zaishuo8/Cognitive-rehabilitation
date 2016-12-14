@@ -1,0 +1,45 @@
+body{
+    background-color: whitesmoke;
+}
+#title{
+    width: 220px;
+    margin: 10px auto;
+}
+#tbpannel{
+    width: 65%;
+    height: 600px;
+    border: 1px solid silver;
+    background-color: white;
+    margin: 20px;
+    float: left;
+}
+#choiced{
+    width: 26%;
+    height: auto;
+    border: 1px solid silver;
+    background-color: white;
+    margin: 20px;
+    float: left;
+}
+.subject{
+    border: 1px solid silver;
+    padding: 15px;
+    float: left;
+    background-color: #d9dadf;
+    margin: 20px;
+}
+.subject button{
+    margin-left: 0;
+}
+.subjectimg{
+    width: 100px;
+    height: 100px;
+}
+.subjecttitle{
+    color: cornflowerblue;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+button.btn{
+    width: 100px;
+}

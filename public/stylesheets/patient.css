@@ -1,0 +1,99 @@
+#patient{
+	width: 75%;
+	margin:25px 20%;
+}
+#myTab li{
+    width: 150px;
+    font-size: 20px;
+    text-align: center;
+}
+#goback{
+    margin-left: 300px;
+}
+input.form-control{
+    width: 80%;
+}
+form{
+    margin-top: 15px;
+}
+button{
+    width: 150px;
+}
+#addpingding{
+    padding-bottom: 10px;
+    height: 50px;
+}
+div.form-group{
+    margin-top: 30px;
+}
+.assesspannel{
+    width: 100%;
+    border: 1px solid #C1BEBE;
+    margin-top: 20px;
+}
+.assesstitle{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #C1BEBE;
+    font-size: 16px;
+    color: dimgray;
+    padding-top: 13px;
+    background-color: #d9dadf;
+}
+.assessdetails{
+    height: 200px;
+    background-color: white;
+}
+.subject{
+    padding: 15px;
+    float: left;
+}
+.subject button{
+    width: 60px;
+    margin-left: 20%;
+}
+.subjectimg{
+    width: 100px;
+    height: 100px;
+}
+.subjecttitle{
+    color: cornflowerblue;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.form-group{
+    width: 100%;
+}
+.tip{
+    width: 55%;
+    margin: 0px auto;
+    color: lightcoral;
+}
+#asstime{
+    width: 180px;
+    border: 1px solid silver;
+    /*font-size: 15px;*/
+}
+.trainpannel{
+    width: 100%;
+    height: 272px;
+    border: 1px solid #C1BEBE;
+    margin-top: 20px;
+}
+.traintitle{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #C1BEBE;
+    font-size: 16px;
+    color: dimgray;
+    padding-top: 12px;
+    background-color: #d9dadf;
+}
+#addtrainti{
+    position: relative;
+    left: 500px;
+}
+.traindetails{
+    height: 210px;
+    background-color: white;
+}

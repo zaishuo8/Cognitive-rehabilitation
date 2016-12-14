@@ -1,0 +1,59 @@
+#imessagepannel{
+    margin-left: 240px;
+    width: 80%;
+    height: 500px;
+}
+#plistpannel{
+    width: 100%;
+    height: 520px;
+    border: 1px solid silver;
+    margin-top: 30px;
+}
+.mesptitle{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    border-bottom: 1px solid silver;
+    text-align: center;
+    padding-top: 8px;
+    background-color: #d9dadf;
+}
+.plists{
+    background-color: white;
+    height: 468px;
+}
+.aplist{
+    width: 160px;
+    height: 160px;
+    margin:20px 40px;
+    float: left;
+}
+.pimgbox{
+    width:104px;
+    height:104px;
+    border:2px solid seagreen;
+    margin:10px auto;
+    border-radius:50%;
+}
+.pimgbox img{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius:50%;
+}
+.mespname{
+    width: 120px;
+    margin: 15px auto;
+    color: #999999;
+}
+#mespages{
+    clear: left;
+    margin-left: 40%;
+}
+img.xiaohongdian{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 80px;
+    bottom: 90px;
+}

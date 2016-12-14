@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/myasses.css">
+
+</head>
+<body style=" background-color: #F8F8FF">
+<%- include pnav.ejs%>
+
+<div id="myassespannel">
+    <div id="nowasspannel" class="messpannel">
+        <div class="panneltitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前评定</div>
+        <div class="pannelsub" id="nowsub">
+            <%if(rs1.length==0){%>
+            <p>当前无评定任务</p>
+            <%}else{%>
+            <p id="nowass">评定开始时间:<%=rs1[0]['astime']%></p>
+            <input type="hidden" id="nowassid" value="<%=rs1[0]['akid']%>">
+            <button type="button" class="btn btn-primary">开始评定</button>
+            <%}%>
+        </div>
+    </div>
+    <div class="messpannel">
+        <div class="panneltitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历史评定任务</div>
+        <div class="pannelsub">
+            <%if(rs2.length==0){%>
+            <p>无历史评定任务</p>
+            <%}else{rs2.forEach(function (row) {%>
+                <p>评定开始时间:<%=row['astime']%></p>
+            <%})}%>
+        </div>
+    </div>
+</div>
+</body>
+</html>

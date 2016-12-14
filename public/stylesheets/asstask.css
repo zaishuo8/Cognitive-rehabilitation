@@ -1,0 +1,38 @@
+#taskpannel {
+    margin-left: 240px;
+    width: 80%;
+}
+.asstask{
+    width: 250px;
+    height: 250px;
+    border: 2px solid silver;
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+}
+.pimgbox{
+    width:104px;
+    height:104px;
+    border:2px solid seagreen;
+    margin:10px auto;
+    border-radius:50%;
+}
+.pimgbox img{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius:50%;
+}
+.taskpname{
+    width: 120px;
+    margin: 15px auto;
+    color: #999999;
+}
+.tasktime{
+    width: 220px;
+    margin: 15px auto;
+    color: #999999;
+}
+.asstask button{
+    margin-left: 33%;
+}

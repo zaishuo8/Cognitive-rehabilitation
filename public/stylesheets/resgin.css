@@ -1,0 +1,18 @@
+.resignpannel{
+    width: 100%;
+    margin:25px 30%;
+}
+.form-control{
+    width: 300px;
+}
+hr{
+    height:1px;
+    border:none;
+    border-top:1px solid silver;
+    width: 600px;
+}
+.tip{
+    width: 55%;
+    margin: 0px auto;
+    color: lightcoral;
+}

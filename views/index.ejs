@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <title>认知康复诊疗系统</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.css" />
+    <script>
+        function mOver(obj){
+            obj.style.color="black";
+        }
+
+        function mOut(obj){
+            obj.style.color="#FFF";
+        }
+    </script>
+
+</head>
+<body style="background-color: #d9dadf">
+<div id="circle" style="width:460px; height:460px; border:50px solid #066; margin:4% auto 0; border-radius:50%;">
+    <div id="imgbox" style="margin:60px auto 10px; width:175px; height:auto;">
+        <img src="images/logo.png"; width="175px"; height="60px" />
+    </div>
+    <%-message%>
+    <form style="width:240px; margin:5px auto" method="post" action="./login" >
+        <div class="input-group" style="height: 45px;">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input name="dnum" id="loginid" type="text" class="form-control" style="height: 45px;" placeholder="请输入用户名" >
+        </div>
+        <div class="input-group" style="height: 45px; margin-top: 10px; margin-bottom: 10px">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+            <input name="pwd" id="loginkey" type="password" class="form-control" style="height: 45px;" placeholder="请输入密码" >
+        </div>
+        <input onMouseOver="mOver(this)" onMouseOut="mOut(this)" type="submit" value="登陆" style=" font-size:24px; color:#FFF; width:240px; height:40px; margin:4px auto; background-color:#066; cursor:pointer" />
+        <div id="checkbox" style=" width:62px;margin:4px auto;">
+            <input id="remeber" type="checkbox">记住我
+        </div>
+    </form>
+</div>
+</div>
+<p id="info" style="font-size:13px; color:#999; text-align:center; margin:20px;">认知康复诊疗系统V1.0<br/><br/>杭州极智医疗科技有限公司<br/>售后联系电话:0571-88720377</p>
+</body>
+</html>
+
